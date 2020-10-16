@@ -5,40 +5,64 @@
 def order(values: list = None) -> list:
     if values is None:
         # TODO: demander les valeurs ici
-        valeur = []
-        while len(valeur) < 10:
-             valeur.append(input("entrer une seule valeur"))
-    return sorted(valeur)
+        values = []
+        if len(values) < 10:
+            val = input("Veuillez entrer une valeur")
+            values.append(val)
+
+    return sorted(values)
 
 
 def anagrams(words: list = None) -> bool:
     if words is None:
         # TODO: demander les mots ici
         words = []
-        while len(word) < 2:
-            word.append(input("entrer un mot"))
+        if len(words) < 2:
+            word = input("Veuillez entrer un mot")
+            words.append(word)
     return sorted(words[0]) == sorted(words[1])
+
+
+
 
 def contains_doubles(items: list) -> bool:
     ensemble = set(items)
-    return len(ensemble) != len(items)
+    return len(items) != len(ensemble)
+
 
 
 def best_grades(student_grades: dict) -> dict:
     # TODO: Retourner un dictionnaire contenant le nom de l'étudiant ayant la meilleure moyenne ainsi que sa moyenne
-    return {}
+    best_student = dict()
+    for index, value in student_grades.items:
+        moyenne = sum(value)/len(value)
+        if len(best_student) == 0 or list(best_student.values())[0] < moyenne:
+            best_student = {index: moyenne}
+
+
+    return best_student
 
 
 def frequence(sentence: str) -> dict:
     # TODO: Afficher les lettres les plus fréquentes
     #       Retourner le tableau de lettres
+    tableau = {}
+    for lettre in sentence:
+        tableau[lettre] = sentence.count(lettre)
+    sorted_key = sorted(tableau, key = tableau.__getitem__, reverse=True)
+    for key in sorted_key:
+        if tableau[key] > 5:
+            print(f"Le caractere {key} revient {tableau[key]} fois")
 
-    return {}
+    return {key: tableau[key]}
 
 
 def get_recipes():
     # TODO: Demander le nom d'une recette, puis ses ingredients et enregistrer dans une structure de données
-    pass
+    nom = input("Veuillez entrer le nom de la recette")
+    ingrédients = input("Veuillez entrer les ingrédient de la recette. svp sepsrer les ingédients avec des virgules").split(",")
+    
+    return {nom: ingrédients}
 
 
 def print_recipe(ingredients) -> None:
